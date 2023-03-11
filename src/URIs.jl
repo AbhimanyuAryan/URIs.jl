@@ -87,6 +87,11 @@ end
 
 URI(;kw...) = URI(emptyuri; kw...)
 
+function URI(uri::String; kw...)
+    isempty(uri) && return URI(emptyuri; kw...)
+    return URI(parse_uri(uri); kw...)
+end
+
 # Based on regex from RFC 3986:
 # https://tools.ietf.org/html/rfc3986#appendix-B
 const uri_reference_regex = RegexAndMatchData[]
